@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Blog sobre Internet: Historia, Tecnología y Seguridad</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+
+     :root {
+  --primary-color: #000000;
+  --secondary-color: #ff0000;
+  --dark-color: #1a1a1a;
+  --light-color: #f0f0f0;
+  --gray-color: #333333;
+  --accent-color: #ff3333;
+  --border-radius: 6px;
+  --box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+  --transition: all 0.3s ease;
+  --header-height: 80px;
+  --nav-height: 60px;
+  font-size: 16px; /* Tamaño base para desktop */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.6;
+  color: var(--dark-color);
+  background-image: url('https://plus.unsplash.com/premium_photo-1671726992841-0d44a12ccacd?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Zm9uZG8lMjBuZWdyb3xlbnwwfHwwfHx8MA%3D%3D');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* ========== Estilos generales responsivos ========== */
+.container {
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4, nav {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ========== Header ========== */
+header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  padding: 3rem 0;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80') center/cover;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+header .container {
+  position: relative;
+  z-index: 1;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* ========== Navegación ========== */
+nav {
+  background-color: var(--dark-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0.8rem 0;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  display: block;
+  transition: var(--transition);
+  font-weight: 500;
+  border-radius: var(--border-radius);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 5px rgba(255,255,255,0.15);
+  border: 1px solid transparent;
+  font-size: 0.9rem;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background-color: var(--secondary-color);
+  transition: var(--transition);
+}
+
+nav a:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--secondary-color);
+  box-shadow: inset 0 0 8px rgba(255, 51, 51, 0.4);
+}
+
+nav a:hover::after {
+  width: 80%;
+}
+
+/* ========== Contenido principal ========== */
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0;
+  gap: 1.5rem;
+}
+
+.main-content {
+  width: 100%;
+}
+
+aside {
+  width: 100%;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  order: -1; /* Mueve el aside arriba en móviles */
+}
+
+/* ========== Artículos ========== */
+article {
+  background-color: white;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  border-top: 4px solid var(--primary-color);
+}
+
+article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+article h2 {
+  color: var(--primary-color);
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid #eee;
+  font-size: 1.6rem;
+}
+
+article h3 {
+  margin: 1.5rem 0 1rem;
+  color: var(--secondary-color);
+  font-size: 1.3rem;
+}
+
+article h4 {
+  margin: 1.2rem 0 0.8rem;
+  color: #444;
+  font-size: 1.1rem;
+}
+
+article p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+article ul, article ol {
+  margin-bottom: 1.2rem;
+  padding-left: 1.2rem;
+}
+
+article li {
+  margin-bottom: 0.5rem;
+}
+
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border: 1px solid #eee;
+}
+
+.image-caption {
+  text-align: center;
+  font-style: italic;
+  color: var(--gray-color);
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+}
+
+/* ========== Sidebar ========== */
+aside h3 {
+  color: var(--dark-color);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #ddd;
+  font-size: 1.2rem;
+}
+
+aside ul {
+  list-style: none;
+}
+
+aside li {
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px dashed #eee;
+}
+
+aside a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition);
+  display: block;
+  padding: 0.2rem 0;
+}
+
+aside a:hover {
+  color: var(--secondary-color);
+  padding-left: 5px;
+}
+
+/* ========== Footer ========== */
+footer {
+  background-color: var(--dark-color);
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 1.5rem;
+}
+
+footer p {
+  margin-bottom: 1.2rem;
+  max-width: 100%;
+  padding: 0 15px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  flex-wrap: wrap;
+  margin-bottom: 1.2rem;
+}
+
+.footer-links li {
+  margin: 0 10px;
+}
+
+.footer-links a {
+  color: #ddd;
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.copyright {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* ========== Componentes especiales ========== */
+blockquote {
+  background-color: #f5f5f5;
+  border-left: 4px solid var(--secondary-color);
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.reference {
+  font-size: 0.85rem;
+  color: var(--gray-color);
+  margin-top: -0.8rem;
+  margin-bottom: 1.2rem;
+  text-align: right;
+}
+
+.reference a {
+  color: var(--gray-color);
+  text-decoration: none;
+}
+
+.reference a:hover {
+  text-decoration: underline;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 10px 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 500;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.timeline {
+  position: relative;
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background-color: var(--secondary-color);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+
+.timeline-item {
+  padding: 8px 30px;
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  border: 3px solid var(--secondary-color);
+  border-radius: 50%;
+  top: 12px;
+  z-index: 1;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  left: 50%;
+}
+
+.left::after {
+  right: -9px;
+}
+
+.right::after {
+  left: -9px;
+}
+
+.timeline-content {
+  padding: 15px;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.tech-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+  transition: var(--transition);
+  border-left: 4px solid var(--secondary-color);
+}
+
+.tech-card:hover {
+  transform: translateX(5px);
+}
+
+.tech-card h4 {
+  color: var(--primary-color);
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.comparison-table {
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.comparison-table th {
+  background-color: var(--secondary-color);
+}
+
+.highlight-box {
+  background-color: #f0f7ff;
+  border-left: 4px solid var(--secondary-color);
+  padding: 1.2rem;
+  margin: 1.2rem 0;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
+
+.stat-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.2rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 0.4rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--gray-color);
+  margin-bottom: 0.6rem; 
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.7rem 1.3rem;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  transition: var(--transition);
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  margin: 0.4rem 0;
+  font-size: 0.9rem;
+}
+
+.btn:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.tag {
+  display: inline-block;
+  background-color: #e0e0e0;
+  color: #555;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  margin-right: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+/* ========== Tecnologías emergentes ========== */
+.tech-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+  gap: 0.4rem;
+}
+
+.tech-tab {
+  padding: 0.7rem 1.2rem;
+  background-color: #f0f0f0;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+  flex: 1 0 auto;
+  text-align: center;
+  min-width: 120px;
+  font-size: 0.9rem;
+}
+
+.tech-tab.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.tech-tab:hover:not(.active) {
+  background-color: #e0e0e0;
+}
+
+.tech-content {
+  display: none;
+}
+
+.tech-content.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tech-feature {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.2rem;
+}
+
+.tech-icon {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin-right: 0.8rem;
+  flex-shrink: 0;
+}
+
+.tech-feature-content {
+  flex: 1;
+}
+
+/* ========== Formulario ========== */
+.subscribe-form input {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 0.7rem;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  font-size: 0.9rem;
+}
+
+.subscribe-form input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 0, 224, 0.1);
+}
+
+/* ========== Cards modernas ========== */
+.modern-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+  transition: var(--transition);
+  border-left: 4px solid var(--secondary-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+}
+
+.modern-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.modern-card h4 {
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+/* ========== Imágenes ========== */
+.img-container {
+  position: relative;
+  margin: 1.5rem 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+.img-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.img-container:hover img {
+  transform: scale(1.03);
+}
+
+/* ========== Media Queries ========== */
+
+/* Tablet (768px en adelante) */
+@media (min-width: 768px) {
+  :root {
+    font-size: 15px;
+  }
+  
+  .container {
+    max-width: 720px;
+    padding: 0 20px;
+  }
+  
+  header {
+    padding: 3.5rem 0;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+  }
+  
+  header p {
+    font-size: 1.2rem;
+  }
+  
+  nav a {
+    padding: 0.7rem 1.1rem;
+    font-size: 0.95rem;
+  }
+  
+  main {
+    flex-direction: row;
+    padding: 2rem 0;
+    gap: 2rem;
+  }
+  
+  .main-content {
+    flex: 3;
+  }
+  
+  aside {
+    flex: 1;
+    order: 0;
+    position: sticky;
+    top: 80px;
+    height: fit-content;
+  }
+  
+  article {
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  article h2 {
+    font-size: 1.8rem;
+  }
+  
+  article h3 {
+    font-size: 1.4rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .timeline-item {
+    padding: 10px 40px;
+  }
+  
+  .timeline-item::after {
+    width: 20px;
+    height: 20px;
+    top: 15px;
+  }
+  
+  .left::after {
+    right: -10px;
+  }
+  
+  .right::after {
+    left: -10px;
+  }
+}
+
+/* Desktop (992px en adelante) */
+@media (min-width: 992px) {
+  :root {
+    font-size: 16px;
+  }
+  
+  .container {
+    max-width: 960px;
+  }
+  
+  header {
+    padding: 4rem 0;
+  }
+  
+  header h1 {
+    font-size: 2.8rem;
+  }
+  
+  header p {
+    font-size: 1.3rem;
+    max-width: 800px;
+  }
+  
+  nav a {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+  }
+  
+  main {
+    padding: 2.5rem 0;
+    gap: 2.5rem;
+  }
+  
+  article {
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  article h2 {
+    font-size: 2rem;
+  }
+  
+  article h3 {
+    font-size: 1.5rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .tech-tabs {
+    flex-wrap: nowrap;
+  }
+  
+  .tech-tab {
+    min-width: auto;
+  }
+}
+
+/* Pantallas grandes (1200px en adelante) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+  
+  header {
+    padding: 5rem 0;
+  }
+  
+  header h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Ajustes específicos para móviles pequeños (menos de 400px) */
+@media (max-width: 400px) {
+  :root {
+    font-size: 13px;
+  }
+  
+  nav li {
+    margin: 0 5px;
+  }
+  
+  nav a {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  
+  .tech-tab {
+    min-width: 100%;
+  }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>El Código Creativo</h1>
+            <p>Un blog completo sobre la historia, tecnología, seguridad y futuro de Internet</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#historia">Historia y Evolución de Internet</a></li>
+            <li><a href="#estructura">Estructura y Componentes de Internet</a></li>
+            <li><a href="#servicios">Servicios y Aplicaciones de Internet</a></li>
+            <li><a href="#seguridad">Seguridad en Internet</a></li>
+            <li><a href="#tecnologias">Tecnologías Emergentes</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <main>
+            <div class="main-content">
+                <article id="historia">
+                    <h2>Historia y Evolución de Internet</h2>
+                    
+                    <p>Internet ha revolucionado la forma en que nos comunicamos, trabajamos y vivimos. Su historia se remonta a la década de 1960, cuando el Departamento de Defensa de los Estados Unidos desarrolló ARPANET, una red diseñada para mantener las comunicaciones en caso de un ataque nuclear.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://i.blogs.es/b98e59/arpanet_april1971_large/1366_2000.jpg" alt="Mapa de ARPANET en sus inicios">
+                    </div>
+                    <p class="image-caption">Mapa lógico de ARPANET en marzo de 1977 (Fuente: <a href="https://commons.wikimedia.org/wiki/File:Arpanet_logical_map,_march_1977.png" target="_blank">Wikimedia Commons</a>)</p>
+                    
+                    <h3>Línea de tiempo de hitos importantes</h3>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h4>1969</h4>
+                                <p>Primer mensaje enviado a través de ARPANET entre UCLA y Stanford. El mensaje "LO" (se intentó enviar "LOGIN") marcó el inicio de las comunicaciones entre computadoras.</p>
+                                <div class="reference">Fuente: <a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/" target="_blank">Internet Society</a></div>
+                            </div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <h4>1971</h4>
+                                <p>Ray Tomlinson envía el primer correo electrónico y elige el símbolo @ para separar el nombre del usuario del nombre de la máquina.</p>
+                                <div class="reference">Fuente: <a href="https://history-computer.com/ray-tomlinson-complete-biography/" target="_blank">History of Computers</a></div>
+                            </div>
+                        </div>
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h4>1983</h4>
+                                <p>Adopción del protocolo TCP/IP como estándar para ARPANET, marcando el nacimiento técnico de Internet como lo conocemos.</p>
+                                <div class="reference">Fuente: <a href="https://www.livinginternet.com/i/ii_tcpip.htm" target="_blank">Living Internet</a></div>
+                            </div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <h4>1989</h4>
+                                <p>Tim Berners-Lee propone la World Wide Web en el CERN, imaginando un sistema global de información vinculada.</p>
+                                <div class="reference">Fuente: <a href="https://home.cern/science/computing/birth-web" target="_blank">CERN</a></div>
+                            </div>
+                        </div>
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h4>1991</h4>
+                                <p>Primera página web publicada, describiendo el proyecto World Wide Web. El navegador web solo mostraba texto.</p>
+                                <div class="reference">Fuente: <a href="https://www.w3.org/History/19921103-hypertext/hypertext/WWW/TheProject.html" target="_blank">World Wide Web Consortium</a></div>
+                            </div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <h4>1998</h4>
+                                <p>Fundación de Google, que revolucionaría la forma de buscar información en Internet.</p>
+                                <div class="reference">Fuente: <a href="https://about.google/our-story/" target="_blank">Google</a></div>
+                            </div>
+                        </div>
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h4>2004</h4>
+                                <p>Nacimiento de Facebook y el comienzo de la era de las redes sociales dominando el panorama digital.</p>
+                                <div class="reference">Fuente: <a href="https://about.fb.com/news/2019/02/facebook-turns-15/" target="_blank">Facebook</a></div>
+                            </div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <h4>2007</h4>
+                                <p>Lanzamiento del iPhone, marcando el inicio de la era móvil y cambiando para siempre cómo interactuamos con Internet.</p>
+                                <div class="reference">Fuente: <a href="https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/" target="_blank">Apple</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Evolución de la adopción de Internet</h3>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">5%</div>
+                            <div class="stat-label">de la población mundial en 1995</div>
+                            <div class="reference">Fuente: <a href="https://ourworldindata.org/internet" target="_blank">Our World in Data</a></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">16%</div>
+                            <div class="stat-label">de la población mundial en 2005</div>
+                            <div class="reference">Fuente: <a href="https://data.worldbank.org/indicator/IT.NET.USER.ZS" target="_blank">Banco Mundial</a></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">35%</div>
+                            <div class="stat-label">de la población mundial en 2015</div>
+                            <div class="reference">Fuente: <a href="https://www.itu.int/en/ITU-D/Statistics/Pages/stat/default.aspx" target="_blank">ITU</a></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">63%</div>
+                            <div class="stat-label">de la población mundial en 2023</div>
+                            <div class="reference">Fuente: <a href="https://www.weforum.org/agenda/2023/03/internet-users-worldwide/" target="_blank">World Economic Forum</a></div>
+                        </div>
+                    </div>
+                    
+                    <blockquote>
+                        "La Web como yo la imaginaba, todavía no la hemos visto. El futuro sigue siendo mucho más grande que el pasado."
+                        <div class="reference"><br>- Tim Berners-Lee, inventor de la World Wide Web (Entrevista para Wired, 2009)</div>
+                    </blockquote>
+                    
+                    <h3>Impacto social de Internet</h3>
+                    <p>Internet ha transformado prácticamente todos los aspectos de la sociedad moderna. Desde la educación hasta el comercio, las relaciones personales y la política, la red global ha redefinido cómo interactuamos con la información y entre nosotros.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://www.uch.edu.pe/sites/default/files/styles/blog_image/public/blog-img/entrevista-comunicacion-y-medios-digitales-uch.jpg?itok=vr6GA3Tb" alt="Impacto social de Internet">
+                    </div>
+                    <p class="image-caption">Impacto de Internet en diferentes aspectos sociales (Fuente: <a href="https://www.pewresearch.org/internet/2021/04/07/the-internet-and-the-pandemic/" target="_blank">Pew Research Center</a>)</p>
+                    
+                    <div class="highlight-box">
+                        <h4>Cambios clave en la sociedad:</h4>
+                        <ul>
+                            <li><strong>Comunicación global instantánea:</strong> Correo electrónico, mensajería y videollamadas han eliminado las barreras de distancia.</li>
+                            <li><strong>Acceso a la información:</strong> Cualquier persona con conexión puede acceder al conocimiento humano acumulado.</li>
+                            <li><strong>Economía digital:</strong> Nuevos modelos de negocio y mercados globales accesibles desde cualquier lugar.</li>
+                            <li><strong>Trabajo remoto:</strong> La ubicación física ya no es limitante para muchas profesiones.</li>
+                            <li><strong>Activismo y movimientos sociales:</strong> Plataformas para organización y difusión de causas.</li>
+                        </ul>
+                        <div class="reference">Fuente: <a href="https://www.sciencedirect.com/science/article/pii/S0040162521003165" target="_blank">Technological Forecasting and Social Change</a></div>
+                    </div>
+                </article>
+                
+                <article id="estructura">
+                    <h2>Estructura y Componentes de Internet</h2>
+                    
+                    <p>Internet es una red global descentralizada que conecta millones de redes más pequeñas. Su arquitectura abierta permite la interoperabilidad entre diferentes tecnologías y proveedores.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmdud_P1yCayYmN9K75UA8FlCzJ9o5ocfPeqKCq4XvwiAiSO7AJs7MWlCojE5YNNoFwZYWQCg4436A6MO5_D-k-oaeRUuVokPco1MJYbIaJVGCNWCgCxxBNrUgee6t-6Sy9tcBM0qjTRM/s640/Captura+de+pantalla+2016-06-28+a+las+17.33.46.png" alt="Diagrama de la estructura de Internet">
+                    </div>
+                    <p class="image-caption">Diagrama conceptual de la estructura de Internet (Fuente: <a href="https://www.cisco.com/c/dam/en_us/about/ac79/docs/innov/IoT_IBSG_0411FINAL.pdf" target="_blank">Cisco IBSG</a>)</p>
+                    
+                    <h3>Componentes principales de Internet</h3>
+                    
+                    <div class="tech-card">
+                        <h4>1. Infraestructura física</h4>
+                        <p>La columna vertebral de Internet consiste en:</p>
+                        <ul>
+                            <li><strong>Cables submarinos:</strong> Más de 400 cables cruzan los océanos, transportando el 99% del tráfico internacional.</li>
+                            <li><strong>Centros de datos:</strong> Instalaciones que alojan servidores y equipos de red.</li>
+                            <li><strong>Routers y switches:</strong> Dispositivos que dirigen el tráfico de datos.</li>
+                            <li><strong>Torres de telefonía móvil:</strong> Para conexiones inalámbricas.</li>
+                        </ul>
+                        <div class="reference">Fuente: <a href="https://www.submarinecablemap.com/" target="_blank">Submarine Cable Map</a></div>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <h4>2. Protocolos de comunicación</h4>
+                        <p>Los estándares que hacen posible la interoperabilidad:</p>
+                        <ul>
+                            <li><strong>TCP/IP:</strong> Protocolo fundamental para el envío de datos.</li>
+                            <li><strong>HTTP/HTTPS:</strong> Para transferencia de páginas web.</li>
+                            <li><strong>DNS:</strong> Sistema de nombres de dominio que traduce URLs a direcciones IP.</li>
+                            <li><strong>SMTP/POP/IMAP:</strong> Para correo electrónico.</li>
+                        </ul>
+                        <div class="reference">Fuente: <a href="https://www.rfc-editor.org/rfc/rfc1180" target="_blank">RFC 1180</a></div>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <h4>3. Proveedores de servicios</h4>
+                        <p>Las organizaciones que mantienen Internet operativo:</p>
+                        <ul>
+                            <li><strong>ISPs (Proveedores de Internet):</strong> Conectan a los usuarios finales.</li>
+                            <li><strong>IXPs (Puntos de Intercambio de Internet):</strong> Donde las redes se interconectan.</li>
+                            <li><strong>Empresas de hosting y CDNs:</strong> Alojan y distribuyen contenido.</li>
+                            <li><strong>Registradores de dominios:</strong> Gestionan nombres de dominio.</li>
+                        </ul>
+                        <div class="reference">Fuente: <a href="https://www.internetsociety.org/resources/doc/2017/internet-infrastructure-guide/" target="_blank">Internet Society</a></div>
+                    </div>
+                    
+                    <h3>Modelo de capas de Internet</h3>
+                    
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Capa</th>
+                                <th>Función</th>
+                                <th>Ejemplos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Aplicación</td>
+                                <td>Interfaz con el usuario y servicios</td>
+                                <td>HTTP, FTP, SMTP, DNS</td>
+                            </tr>
+                            <tr>
+                                <td>Transporte</td>
+                                <td>Comunicación extremo a extremo</td>
+                                <td>TCP, UDP</td>
+                            </tr>
+                            <tr>
+                                <td>Red</td>
+                                <td>Direccionamiento y enrutamiento</td>
+                                <td>IP, routers</td>
+                            </tr>
+                            <tr>
+                                <td>Enlace</td>
+                                <td>Conexión entre nodos adyacentes</td>
+                                <td>Ethernet, WiFi</td>
+                            </tr>
+                            <tr>
+                                <td>Física</td>
+                                <td>Medios de transmisión</td>
+                                <td>Cables, fibra óptica, señales inalámbricas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="reference">Fuente: <a href="https://www.ibm.com/docs/en/aix/7.2?topic=protocols-tcpip-protocols" target="_blank">IBM Documentation</a></div>
+                    
+                    <blockquote>
+                        "Internet no es una red única, sino una red de redes, una estructura descentralizada que ha crecido orgánicamente durante décadas."
+                        <div class="reference"><br>- Barry Leiner, coautor de "A Brief History of the Internet" (Internet Society)</div>
+                    </blockquote>
+                    
+                    <h3>¿Cómo viaja la información en Internet?</h3>
+                    <p>Cuando visitas un sitio web, la información sigue un complejo camino:</p>
+                    <ol>
+                        <li>Tu dispositivo envía una solicitud a través de tu ISP</li>
+                        <li>El DNS traduce el nombre de dominio a una dirección IP</li>
+                        <li>Los routers dirigen tu solicitud a través de múltiples redes</li>
+                        <li>La solicitud llega al servidor que aloja el sitio web</li>
+                        <li>El servidor procesa la solicitud y envía los datos de vuelta</li>
+                        <li>Los paquetes de datos viajan por la mejor ruta disponible</li>
+                        <li>Tu navegador recibe y ensambla los datos para mostrar la página</li>
+                    </ol>
+                    <div class="reference">Fuente: <a href="https://www.cloudflare.com/learning/dns/what-is-dns/" target="_blank">Cloudflare Learning</a></div>
+                    
+                    <div class="img-container">
+                        <img src="https://www.cloudflare.com/resources/images/slt3lc6tev37/2a78t2NoIFtHxWhkfJO1ww/4b072af86f41b9955ad62092a53f40be/how-does-internet-work.png" alt="Cómo viajan los datos en Internet">
+                    </div>
+                    <p class="image-caption">Ruta de los datos a través de Internet (Fuente: <a href="https://www.cloudflare.com/learning/network-layer/how-data-travels-the-internet/" target="_blank">Cloudflare</a>)</p>
+                </article>
+                
+                <article id="servicios">
+                    <h2>Servicios y Aplicaciones de Internet</h2>
+                    
+                    <p>La variedad de servicios disponibles en Internet ha crecido exponencialmente desde sus inicios, transformando industrias completas y creando nuevas formas de interacción social.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://wisp.com.mx/wp-content/uploads/2021/11/Internet-1200x616.jpg" alt="Gráfico de uso de servicios de Internet">
+                    </div>
+                    <p class="image-caption">Evolución del uso de servicios de Internet (Fuente: <a href="https://www.pewresearch.org/internet/2021/04/07/the-internet-and-the-pandemic/" target="_blank">Pew Research Center</a>)</p>
+                    
+                    <h3>Categorías principales de servicios</h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                        <div class="tech-card">
+                            <h4>Comunicación</h4>
+                            <ul>
+                                <li>Correo electrónico (Gmail, Outlook)</li>
+                                <li>Mensajería (WhatsApp, Telegram)</li>
+                                <li>Videoconferencia (Zoom, Teams)</li>
+                                <li>Redes sociales (Facebook, Twitter)</li>
+                                <li>Foros y comunidades (Reddit)</li>
+                            </ul>
+                            <div class="reference">Fuente: <a href="https://www.statista.com/topics/1536/social-media/" target="_blank">Statista</a></div>
+                        </div>
+                        <div class="tech-card">
+                            <h4>Información</h4>
+                            <ul>
+                                <li>Motores de búsqueda (Google, Bing)</li>
+                                <li>Enciclopedias (Wikipedia)</li>
+                                <li>Noticias digitales</li>
+                                <li>Blogs y tutoriales</li>
+                                <li>Cursos en línea (Coursera, Udemy)</li>
+                            </ul>
+                            <div class="reference">Fuente: <a href="https://www.pewresearch.org/internet/2021/01/12/the-state-of-online-learning/" target="_blank">Pew Research</a></div>
+                        </div>
+                        <div class="tech-card">
+                            <h4>Entretenimiento</h4>
+                            <ul>
+                                <li>Streaming de video (YouTube, Netflix)</li>
+                                <li>Música en línea (Spotify, Apple Music)</li>
+                                <li>Juegos multijugador</li>
+                                <li>Redes sociales (Instagram, TikTok)</li>
+                                <li>Podcasts y audiolibros</li>
+                            </ul>
+                            <div class="reference">Fuente: <a href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-state-of-streaming-on-the-cusp-of-change" target="_blank">McKinsey</a></div>
+                        </div>
+                        <div class="tech-card">
+                            <h4>Comercio y servicios</h4>
+                            <ul>
+                                <li>Tiendas en línea (Amazon, eBay)</li>
+                                <li>Banca digital</li>
+                                <li>Servicios de pago (PayPal, Stripe)</li>
+                                <li>Reservas (Booking, Airbnb)</li>
+                                <li>Plataformas freelance (Upwork, Fiverr)</li>
+                            </ul>
+                            <div class="reference">Fuente: <a href="https://www.emarketer.com/content/global-ecommerce-forecast-2022" target="_blank">eMarketer</a></div>
+                        </div>
+                    </div>
+                    
+                    <h3>Evolución de las aplicaciones web</h3>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Generación</th>
+                                <th>Periodo</th>
+                                <th>Características</th>
+                                <th>Ejemplos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Web 1.0</td>
+                                <td>1991-2004</td>
+                                <td>Páginas estáticas, contenido de solo lectura</td>
+                                <td>Sitios HTML básicos, directorios</td>
+                            </tr>
+                            <tr>
+                                <td>Web 2.0</td>
+                                <td>2004-2010</td>
+                                <td>Contenido generado por usuarios, interactividad</td>
+                                <td>Blogs, redes sociales, wikis</td>
+                            </tr>
+                            <tr>
+                                <td>Web Móvil</td>
+                                <td>2010-2016</td>
+                                <td>Optimización para dispositivos móviles, apps</td>
+                                <td>Instagram, Uber, aplicaciones nativas</td>
+                            </tr>
+                            <tr>
+                                <td>Web Actual</td>
+                                <td>2016-presente</td>
+                                <td>IA, personalización, PWAs, contenido en tiempo real</td>
+                                <td>TikTok, ChatGPT, aplicaciones progresivas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="reference">Fuente: <a href="https://www.sciencedirect.com/science/article/pii/S0268401221000067" target="_blank">International Journal of Information Management</a></div>
+                    
+                    <h3>Impacto económico de los servicios de Internet</h3>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">$4.9T</div>
+                            <div class="stat-label">Contribución a la economía global (2022)</div>
+                            <div class="reference">Fuente: <a href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-social-economy" target="_blank">McKinsey</a></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">28%</div>
+                            <div class="stat-label">del PIB en países desarrollados</div>
+                            <div class="reference">Fuente: <a href="https://www.bcg.com/publications/2021/economic-impact-of-internet-economy" target="_blank">BCG</a></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">5M+</div>
+                            <div class="stat-label">empleos directos en el sector</div>
+                            <div class="reference">Fuente: <a href="https://www.weforum.org/reports/the-future-of-jobs-report-2020" target="_blank">WEF</a></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">15%</div>
+                            <div class="stat-label">crecimiento anual en economías digitales</div>
+                            <div class="reference">Fuente: <a href="https://www.idc.com/getdoc.jsp?containerId=prUS48471622" target="_blank">IDC</a></div>
+                        </div>
+                    </div>
+                    
+                    <blockquote>
+                        "La Web ha crecido hasta convertirse en un espacio público, una biblioteca, un consultorio médico, una tienda, una escuela, un estudio de diseño, una oficina, un cine, un banco y mucho más."
+                        <div class="reference">- Tim Berners-Lee (Weaving the Web, 1999)</div>
+                    </blockquote>
+                    
+                    <h3>Futuro de los servicios en Internet</h3>
+                    <p>Las tendencias emergentes incluyen:</p>
+                    <ul>
+                        <li><strong>Realidad extendida:</strong> Comercio y educación en entornos virtuales</li>
+                        <li><strong>Asistentes de IA:</strong> Interacción más natural con servicios digitales</li>
+                        <li><strong>Internet de las Cosas:</strong> Más dispositivos conectados e inteligentes</li>
+                        <li><strong>Web3:</strong> Servicios descentralizados con blockchain</li>
+                        <li><strong>Hiperpersonalización:</strong> Experiencias adaptadas individualmente</li>
+                    </ul>
+                    <div class="reference">Fuente: <a href="https://www.gartner.com/en/articles/gartner-top-10-strategic-technology-trends-for-2023" target="_blank">Gartner</a></div>
+                </article>
+                
+                <article id="seguridad">
+                    <h2>Seguridad en Internet</h2>
+                    
+                    <p>Con el crecimiento de Internet, los riesgos de seguridad han aumentado proporcionalmente, requiriendo nuevas estrategias de protección para usuarios y organizaciones.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://www.akamai.com/site/es/images/article/2022/common-types-of-attack-vectors.png" alt="Concepto de seguridad cibernética">
+                    </div>
+                    <p class="image-caption">Elementos clave de la seguridad cibernética (Fuente: <a href="https://www.kaspersky.com/resource-center/definitions/what-is-cyber-security" target="_blank">Kaspersky Lab</a>)</p>
+                    
+                    <h3>Panorama actual de amenazas</h3>
+                    
+                    <div class="highlight-box">
+                        <h4>Estadísticas clave (2023):</h4>
+                        <ul>
+                            <li>Un ataque de ransomware ocurre cada 11 segundos</li>
+                            <li>El costo promedio de una violación de datos es de $4.35 millones</li>
+                            <li>El 95% de las violaciones de seguridad se deben a error humano</li>
+                            <li>El phishing representa más del 80% de los incidentes reportados</li>
+                            <li>Se espera que el daño por cibercrimen alcance los $10.5 trillones anuales para 2025</li>
+                        </ul>
+                        <div class="reference">Fuente: <a href="https://www.ibm.com/reports/data-breach" target="_blank">IBM Security</a> y <a href="https://cybersecurityventures.com/cybercrime-damages-6-trillion-by-2021/" target="_blank">Cybersecurity Ventures</a></div>
+                    </div>
+                    
+                    <h3>Principales amenazas y protecciones</h3>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Amenaza</th>
+                                <th>Descripción</th>
+                                <th>Protección</th>
+                                <th>Impacto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Phishing</td>
+                                <td>Suplantación de identidad para robar credenciales</td>
+                                <td>Filtros anti-spam, educación, verificación en dos pasos</td>
+                                <td>Pérdida de datos, acceso no autorizado</td>
+                            </tr>
+                            <tr>
+                                <td>Malware</td>
+                                <td>Software maliciosos que daña sistemas</td>
+                                <td>Antivirus, actualizaciones, políticas de descarga</td>
+                                <td>Pérdida de datos, control de dispositivos</td>
+                            </tr>
+                            <tr>
+                                <td>Ransomware</td>
+                                <td>Secuestro de datos por rescate</td>
+                                <td>Copias de seguridad, segmentación de red, parches</td>
+                                <td>Interrupción operacional, pérdidas financieras</td>
+                            </tr>
+                            <tr>
+                                <td>Ataques DDoS</td>
+                                <td>Saturación de servicios para dejarlos inaccesibles</td>
+                                <td>Protección DDoS, redundancia, escalabilidad</td>
+                                <td>Interrupción de servicios, pérdida de ingresos</td>
+                            </tr>
+                            <tr>
+                                <td>Ingeniería social</td>
+                                <td>Manipulación psicológica para obtener acceso</td>
+                                <td>Educación, políticas claras, verificación</td>
+                                <td>Pérdida de datos, acceso no autorizado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="reference">Fuente: <a href="https://www.cisa.gov/stopransomware" target="_blank">CISA</a> y <a href="https://www.mcafee.com/enterprise/en-us/security-awareness/cyber-threats.html" target="_blank">McAfee</a></div>
+                    
+                    <h3>Guía de seguridad para usuarios</h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                        <div class="tech-card">
+                            <h4>Contraseñas seguras</h4>
+                            <ul>
+                                <li>Usa frases largas en lugar de palabras</li>
+                                <li>No reutilices contraseñas</li>
+                                <li>Considera un gestor de contraseñas</li>
+                                <li>Habilita autenticación en dos factores</li>
+                                <li>Cambia contraseñas periódicamente</li>
+                            </ul>
+                            <div class="reference">Fuente: <a href="https://www.nist.gov/itl/applied-cybersecurity/tig/back-basics-multi-factor-authentication" target="_blank">NIST</a></div>
+                        </div>
+                        <div class="tech-card">
+                            <h4>Navegación segura</h4>
+                            <ul>
+                                <li>Verifica que los sitios usen HTTPS</li>
+                                <li>No hagas clic en enlaces sospechosos</li>
+                                <li>Usa bloqueadores de anuncios</li>
+                                <li>Mantén tu navegador actualizado</li>
+                                <li>Considera extensiones de seguridad</li>
+                            </ul>
+                            <div class="reference">Fuente: <a href="https://www.consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams" target="_blank">FTC</a></div>
+                        </div>
+                        <div class="tech-card">
+                            <h4>Protección de dispositivos</h4>
+                            <ul>
+                                <li>Instala software antivirus</li>
+                                <li>Actualiza tu sistema operativo</li>
+                                <li>Habilita el firewall</li>
+                                <li>Realiza copias de seguridad</li>
+                                <li>Sé cauteloso con redes WiFi públicas</li>
+                            </ul>
+                            <div class="reference">Fuente: <a href="https://www.cisa.gov/secure-our-world" target="_blank">CISA</a></div>
+                        </div>
+                        <div class="tech-card">
+                            <h4>Seguridad en redes sociales</h4>
+                            <ul>
+                                <li>Revisa configuraciones de privacidad</li>
+                                <li>No compartas información personal</li>
+                                <li>Desconfía de mensajes inesperados</li>
+                                <li>Usa autenticación en dos factores</li>
+                                <li>Reporta cuentas sospechosas</li>
+                            </ul>
+                            <div class="reference">Fuente: <a href="https://staysafeonline.org/resources/online-safety-basics/" target="_blank">Stay Safe Online</a></div>
+                        </div>
+                    </div>
+                    
+                    <h3>Seguridad para organizaciones</h3>
+                    <p>Las empresas requieren estrategias más complejas:</p>
+                    <ol>
+                        <li><strong>Evaluación de riesgos:</strong> Identificar activos críticos y vulnerabilidades</li>
+                        <li><strong>Políticas de seguridad:</strong> Establecer normas claras para empleados</li>
+                        <li><strong>Segmentación de red:</strong> Limitar acceso a áreas sensibles</li>
+                        <li><strong>Monitoreo continuo:</strong> Detección temprana de anomalías</li>
+                        <li><strong>Plan de respuesta:</strong> Protocolos para incidentes de seguridad</li>
+                        <li><strong>Educación continua:</strong> Capacitación sobre amenazas actuales</li>
+                    </ol>
+                    <div class="reference">Fuente: <a href="https://www.iso.org/isoiec-27001-information-security.html" target="_blank">ISO 27001</a></div>
+                    
+                    <blockquote>
+                        "La ciberseguridad ya no es solo un problema técnico, es un desafío fundamental para la sociedad moderna."
+                        <div class="reference"><br>- Bruce Schneier, experto en seguridad informática (Data and Goliath, 2015)</div>
+                    </blockquote>
+                    
+                    <h3>Futuro de la seguridad en Internet</h3>
+                    <p>Las tendencias emergentes incluyen:</p>
+                    <ul>
+                        <li><strong>Autenticación sin contraseña:</strong> Uso de biométricos y tokens de hardware</li>
+                        <li><strong>Seguridad basada en IA:</strong> Detección de anomalías en tiempo real</li>
+                        <li><strong>Criptografía post-cuántica:</strong> Preparación para la era cuántica</li>
+                        <li><strong>Seguridad Zero Trust:</strong> Verificación continua de identidad</li>
+                        <li><strong>Blockchain para identidad:</strong> Control descentralizado de credenciales</li>
+                    </ul>
+                    <div class="reference">Fuente: <a href="https://www.gartner.com/en/information-technology/insights/cybersecurity-trends" target="_blank">Gartner</a></div>
+                </article>
+                
+                <article id="tecnologias">
+                    <h2>Tecnologías Emergentes</h2>
+                    
+                    <p>El futuro de Internet está siendo moldeado por tecnologías innovadoras que prometen transformar nuestra experiencia digital y la sociedad en general.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://www.onirix.com/wp-content/uploads/2023/03/cabecera-1536x496.jpg.webp" alt="Tecnologías emergentes">
+                    </div>
+                    <p class="image-caption">Tendencias tecnológicas emergentes (Fuente: <a href="https://www.gartner.com/en/articles/gartner-top-10-strategic-technology-trends-for-2023" target="_blank">Gartner, 2023</a>)</p>
+                    
+                    <div class="tech-tabs">
+                        <div class="tech-tab active" onclick="showTechContent('rev4')">4ª Revolución Industrial</div>
+                        <div class="tech-tab" onclick="showTechContent('ia')">Inteligencia Artificial</div>
+                        <div class="tech-tab" onclick="showTechContent('iot')">Internet de las Cosas</div>
+                        <div class="tech-tab" onclick="showTechContent('vr-ar')">Realidad Virtual/Aumentada</div>
+                    </div>
+                    
+                    <div id="rev4" class="tech-content active">
+                        <h3>La Cuarta Revolución Industrial</h3>
+                        <p>La convergencia de tecnologías digitales, físicas y biológicas está transformando la industria y la sociedad a un ritmo sin precedentes.</p>
+                        
+                        <div class="modern-card">
+                            <h4>Características principales</h4>
+                            <ul>
+                                <li>Fusión de tecnologías que difuminan las líneas entre lo físico, digital y biológico</li>
+                                <li>Velocidad exponencial de los avances tecnológicos</li>
+                                <li>Impacto en todas las industrias y economías</li>
+                                <li>Cambios profundos en los sistemas de producción, gestión y gobierno</li>
+                            </ul>
+                            <div class="reference">Fuente: <a href="https://www.weforum.org/about/the-fourth-industrial-revolution-by-klaus-schwab" target="_blank">World Economic Forum</a></div>
+                        </div>
+                        
+                        <div class="tech-feature">
+                            <div class="tech-icon"><i class="fas fa-robot"></i></div>
+                            <div class="tech-feature-content">
+                                <h4>Automatización y Sistemas Ciber-Físicos</h4>
+                                <p>Fábricas inteligentes donde máquinas, sensores y sistemas informáticos se comunican entre sí para tomar decisiones descentralizadas.</p>
+                                <div class="reference">Fuente: <a href="https://www.mckinsey.com/featured-insights/future-of-work/what-the-future-of-work-will-mean-for-jobs-skills-and-wages" target="_blank">McKinsey</a></div>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-feature">
+                            <div class="tech-icon"><i class="fas fa-network-wired"></i></div>
+                            <div class="tech-feature-content">
+                                <h4>Internet Industrial</h4>
+                                <p>Redes de dispositivos industriales conectados que recopilan, analizan y actúan sobre datos en tiempo real.</p>
+                                <div class="reference">Fuente: <a href="https://www.ge.com/digital/blog/what-industrial-internet-things" target="_blank">GE Digital</a></div>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">$3.7T</div>
+                                <div class="stat-label">Valor potencial para 2025</div>
+                                <div class="reference">Fuente: <a href="https://www.pwc.com/gx/en/industries/industries-4.0/landing-page/industry-4.0-building-your-digital-enterprise-april-2016.pdf" target="_blank">PwC</a></div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">50%</div>
+                                <div class="stat-label">de tareas actuales automatizables</div>
+                                <div class="reference">Fuente: <a href="https://www.mckinsey.com/featured-insights/future-of-work/what-the-future-of-work-will-mean-for-jobs-skills-and-wages" target="_blank">McKinsey</a></div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">75%</div>
+                                <div class="stat-label">de empresas adoptando tecnologías 4.0</div>
+                                <div class="reference">Fuente: <a href="https://www2.deloitte.com/content/dam/Deloitte/global/Documents/About-Deloitte/gx-about-deloitte-4IR-readiness-report.pdf" target="_blank">Deloitte</a></div>
+                            </div>
+                        </div>
+                        
+                        <blockquote>
+                            "La Cuarta Revolución Industrial no se define por un conjunto de tecnologías emergentes, sino por la transición hacia nuevos sistemas que se construyen sobre la infraestructura de la revolución digital."
+                            <div class="reference"><br>- Klaus Schwab, Fundador del Foro Económico Mundial</div>
+                        </blockquote>
+                    </div>
+                    
+                    <div id="ia" class="tech-content">
+                        <h3>Inteligencia Artificial</h3>
+                        <p>La capacidad de las máquinas para aprender, razonar y tomar decisiones está transformando todos los aspectos de la sociedad.</p>
+                        
+                        <div class="modern-card">
+                            <h4>Aplicaciones clave</h4>
+                            <ul>
+                                <li><strong>Asistentes virtuales:</strong> Chatbots y asistentes de voz avanzados</li>
+                                <li><strong>Diagnóstico médico:</strong> Análisis de imágenes y predicción de enfermedades</li>
+                                <li><strong>Recomendaciones personalizadas:</strong> Desde compras hasta contenido educativo</li>
+                                <li><strong>Automatización de procesos:</strong> Desde manufactura hasta servicios financieros</li>
+                            </ul>
+                            <div class="reference">Fuente: <a href="https://www.mckinsey.com/featured-insights/artificial-intelligence/notes-from-the-ai-frontier-applications-and-value-of-deep-learning" target="_blank">McKinsey</a></div>
+                        </div>
+                        
+                        <div class="img-container">
+                            <img src="https://www.pewresearch.org/internet/wp-content/uploads/sites/9/2022/06/PI_2022.06.21_AI-and-Human-Expertise_FINAL-1.png" alt="Impacto de la IA">
+                        </div>
+                        <p class="image-caption">Impacto de la IA en diferentes sectores (Fuente: <a href="https://www.pewresearch.org/internet/2022/06/21/ai-and-human-expertise/" target="_blank">Pew Research Center</a>)</p>
+                        
+                        <h3>Tipos de Inteligencia Artificial</h3>
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Descripción</th>
+                                    <th>Ejemplos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>IA Estrecha (ANI)</td>
+                                    <td>Diseñada para tareas específicas</td>
+                                    <td>Reconocimiento facial, asistentes virtuales</td>
+                                </tr>
+                                <tr>
+                                    <td>IA General (AGI)</td>
+                                    <td>Capacidad cognitiva similar a humana</td>
+                                    <td>En desarrollo, no existe completamente</td>
+                                </tr>
+                                <tr>
+                                    <td>Superinteligencia</td>
+                                    <td>Supera la inteligencia humana en todos los aspectos</td>
+                                    <td>Teórica, no existe actualmente</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="reference">Fuente: <a href="https://www.sciencedirect.com/science/article/pii/S0007681319301260" target="_blank">Artificial Intelligence Journal</a></div>
+                        
+                        <div class="highlight-box">
+                            <h4>Desafíos éticos</h4>
+                            <ul>
+                                <li>Sesgos en algoritmos y datos de entrenamiento</li>
+                                <li>Privacidad y uso de datos personales</li>
+                                <li>Impacto en el empleo y economía</li>
+                                <li>Transparencia en la toma de decisiones</li>
+                                <li>Control y regulación de sistemas autónomos</li>
+                            </ul>
+                            <div class="reference">Fuente: <a href="https://www.oecd.org/ai/ai-principles/" target="_blank">OECD AI Principles</a></div>
+                        </div>
+                    </div>
+                    
+                    <div id="iot" class="tech-content">
+                        <h3>Internet de las Cosas (IoT)</h3>
+                        <p>La red de dispositivos físicos conectados que recopilan e intercambian datos está creando un mundo más inteligente y conectado.</p>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">30B+</div>
+                                <div class="stat-label">dispositivos conectados (2025)</div>
+                                <div class="reference">Fuente: <a href="https://www.statista.com/statistics/471264/iot-number-of-connected-devices-worldwide/" target="_blank">Statista</a></div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">$1.6T</div>
+                                <div class="stat-label">inversión global (2025)</div>
+                                <div class="reference">Fuente: <a href="https://www.idc.com/getdoc.jsp?containerId=prUS47537221" target="_blank">IDC</a></div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                            <div class="modern-card">
+                                <h4><i class="fas fa-home"></i> Hogar Inteligente</h4>
+                                <ul>
+                                    <li>Termostatos inteligentes</li>
+                                    <li>Seguridad automatizada</li>
+                                    <li>Electrodomésticos conectados</li>
+                                    <li>Iluminación inteligente</li>
+                                </ul>
+                                <div class="reference">Fuente: <a href="https://www.statista.com/outlook/dmo/smart-home/worldwide" target="_blank">Statista</a></div>
+                            </div>
+                            <div class="modern-card">
+                                <h4><i class="fas fa-city"></i> Ciudades Inteligentes</h4>
+                                <ul>
+                                    <li>Gestión del tráfico</li>
+                                    <li>Monitoreo ambiental</li>
+                                    <li>Alumbrado público eficiente</li>
+                                    <li>Recolección de basura optimizada</li>
+                                </ul>
+                                <div class="reference">Fuente: <a href="https://www.mckinsey.com/industries/public-and-social-sector/our-insights/smart-cities-digital-solutions-for-a-more-livable-future" target="_blank">McKinsey</a></div>
+                            </div>
+                            <div class="modern-card">
+                                <h4><i class="fas fa-industry"></i> Industria 4.0</h4>
+                                <ul>
+                                    <li>Mantenimiento predictivo</li>
+                                    <li>Cadenas de suministro inteligentes</li>
+                                    <li>Monitoreo de activos</li>
+                                    <li>Optimización energética</li>
+                                </ul>
+                                <div class="reference">Fuente: <a href="https://www2.deloitte.com/us/en/insights/focus/industry-4-0.html" target="_blank">Deloitte</a></div>
+                            </div>
+                        </div>
+                        
+                        <h3>Retos del IoT</h3>
+                        <ul>
+                            <li><strong>Seguridad:</strong> Dispositivos vulnerables pueden ser puntos de entrada para ataques</li>
+                            <li><strong>Interoperabilidad:</strong> Estándares diversos dificultan la comunicación entre dispositivos</li>
+                            <li><strong>Privacidad:</strong> Gran cantidad de datos personales recolectados</li>
+                            <li><strong>Escalabilidad:</strong> Gestión de millones de dispositivos simultáneos</li>
+                            <li><strong>Energía:</strong> Autonomía de dispositivos sin conexión a red eléctrica</li>
+                        </ul>
+                        <div class="reference">Fuente: <a href="https://www.gartner.com/en/information-technology/insights/internet-of-things" target="_blank">Gartner</a></div>
+                    </div>
+                    
+                    <div id="vr-ar" class="tech-content">
+                        <h3>Realidad Virtual y Aumentada</h3>
+                        <p>Las tecnologías inmersivas están transformando la forma en que interactuamos con información y entre nosotros.</p>
+                        
+                        <div class="tech-feature">
+                            <div class="tech-icon"><i class="fas fa-vr-cardboard"></i></div>
+                            <div class="tech-feature-content">
+                                <h4>Realidad Virtual (VR)</h4>
+                                <p>Entornos completamente inmersivos generados por computadora que reemplazan la realidad física.</p>
+                                <ul>
+                                    <li><strong>Entretenimiento:</strong> Juegos, películas inmersivas</li>
+                                    <li><strong>Educación:</strong> Simulaciones de entrenamiento</li>
+                                    <li><strong>Terapia:</strong> Tratamiento de fobias, TEPT</li>
+                                    <li><strong>Arquitectura:</strong> Recorridos virtuales de diseños</li>
+                                </ul>
+                                <div class="reference">Fuente: <a href="https://www.pwc.com/us/en/tech-effect/emerging-tech/virtual-reality-study.html" target="_blank">PwC</a></div>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-feature">
+                            <div class="tech-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <div class="tech-feature-content">
+                                <h4>Realidad Aumentada (AR)</h4>
+                                <p>Superposición de información digital sobre el mundo real a través de dispositivos.</p>
+                                <ul>
+                                    <li><strong>Retail:</strong> Probadores virtuales, visualización de muebles</li>
+                                    <li><strong>Educación:</strong> Modelos 3D interactivos</li>
+                                    <li><strong>Manufactura:</strong> Asistencia en ensamblaje y mantenimiento</li>
+                                    <li><strong>Navegación:</strong> Direcciones superpuestas en calles</li>
+                                </ul>
+                                <div class="reference">Fuente: <a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/augmented-and-virtual-reality-the-promise-and-peril-of-immersive-technologies" target="_blank">McKinsey</a></div>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">$72.8B</div>
+                                <div class="stat-label">mercado global (2024)</div>
+                                <div class="reference">Fuente: <a href="https://www.statista.com/outlook/amo/virtual-reality-ar/worldwide" target="_blank">Statista</a></div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">23M</div>
+                                <div class="stat-label">dispositivos VR/AR vendidos (2023)</div>
+                                <div class="reference">Fuente: <a href="https://www.idc.com/getdoc.jsp?containerId=prUS50047423" target="_blank">IDC</a></div>
+                            </div>
+                        </div>
+                        
+                        <blockquote>
+                            "La realidad extendida será tan revolucionaria para la interacción humano-computadora como lo fue el mouse en los años 80."
+                            <div class="reference">- Mark Zuckerberg, CEO de Meta</div>
+                        </blockquote>
+                        
+                        <h3>Futuro de las tecnologías inmersivas</h3>
+                        <ul>
+                            <li><strong>Gafas AR ligeras:</strong> Reemplazo potencial de smartphones</li>
+                            <li><strong>Haptics avanzados:</strong> Feedback táctil más realista</li>
+                            <li><strong>Interfaces neuronales:</strong> Control con ondas cerebrales</li>
+                            <li><strong>Metaverso:</strong> Espacios virtuales persistentes compartidos</li>
+                            <li><strong>Telepresencia:</strong> Reuniones y colaboración en espacios virtuales</li>
+                        </ul>
+                        <div class="reference">Fuente: <a href="https://www.gartner.com/en/articles/gartner-top-10-strategic-technology-trends-for-2023" target="_blank">Gartner</a></div>
+                    </div>
+                    
+                    <h3>Impacto conjunto de las tecnologías emergentes</h3>
+                    <p>La convergencia de estas tecnologías está creando sinergias poderosas:</p>
+                    <ul>
+                        <li><strong>IA + IoT:</strong> Dispositivos inteligentes que aprenden y se adaptan</li>
+                        <li><strong>VR/AR + 5G:</strong> Experiencias inmersivas en tiempo real sin latencia</li>
+                        <li><strong>Blockchain + IoT:</strong> Seguridad y transparencia en dispositivos conectados</li>
+                        <li><strong>Robótica + IA:</strong> Sistemas autónomos capaces de aprendizaje</li>
+                    </ul>
+                    <div class="reference">Fuente: <a href="https://www2.deloitte.com/us/en/insights/focus/tech-trends.html" target="_blank">Deloitte Tech Trends</a></div>
+                    
+                    <div class="highlight-box">
+                        <h4>Preparándose para el futuro tecnológico</h4>
+                        <ol>
+                            <li><strong>Educación continua:</strong> Mantenerse actualizado con las tendencias</li>
+                            <li><strong>Adaptabilidad:</strong> Desarrollar habilidades transferibles</li>
+                            <li><strong>Pensamiento crítico:</strong> Evaluar tecnologías objetivamente</li>
+                            <li><strong>Colaboración:</strong> Trabajar junto con sistemas inteligentes</li>
+                            <li><strong>Ética digital:</strong> Considerar implicaciones sociales de la tecnología</li>
+                        </ol>
+                        <div class="reference">Fuente: <a href="https://www.weforum.org/reports/the-future-of-jobs-report-2023" target="_blank">World Economic Forum</a></div>
+                    </div>
+                </article>
+            </div>
+            
+    
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Blog sobre Internet - Un recurso educativo sobre el mundo digital</p>
+            <p>Explorando la historia, tecnología y futuro de la red global que conecta al mundo.</p>
+            <ul class="footer-links">
+
+            </ul>
+            <p class="copyright">Angel Ariel Najera Valdez</p>
+        </div>
+    </footer>
+    
+    <script>
+        function showTechContent(techId) {
+            // Ocultar todos los contenidos
+            document.querySelectorAll('.tech-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Desactivar todas las pestañas
+            document.querySelectorAll('.tech-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Mostrar el contenido seleccionado
+            document.getElementById(techId).classList.add('active');
+            
+            // Activar la pestaña seleccionada
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
+
